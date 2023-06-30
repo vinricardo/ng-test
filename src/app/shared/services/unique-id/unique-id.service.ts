@@ -4,9 +4,11 @@ import { v4 as uuidv4 } from 'uuid';
 @Injectable()
 export class UniqueIdService {
   private numberOfGeneratedIds = 0;
+  private regexPrefix = /^[A-Za-z]+[\w\-\:\.]*$/;
 
   generateUniqueIdWithPrefix(prefix: string): string {
-    if (prefix == '') new Error('Prefixo não pode ser vazio');
+    if (!prefix || !this.regexPrefix.test(prefix))
+      throw new Error('Prefixo não pode ser vazio');
     const uniqueId = this.generateUniqueId();
     this.numberOfGeneratedIds++;
     return `${prefix}-${uniqueId}`;
