@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "postinstall": "ngcc",
+    "test-coverage": "ng test --watch=false --sourceMap=true --codeCoverage=true --browsers ChromeHeadless",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
